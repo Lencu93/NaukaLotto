@@ -1,0 +1,15 @@
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\Lotto.csproj.AssemblyReference.cache
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\Lotto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\Lotto.AssemblyInfoInputs.cache
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\Lotto.AssemblyInfo.cs
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\Lotto.csproj.CoreCompileInputs.cache
+C:\Users\lenck\source\repos\StartNauki\Lotto\bin\Debug\net6.0\Lotto.exe
+C:\Users\lenck\source\repos\StartNauki\Lotto\bin\Debug\net6.0\Lotto.deps.json
+C:\Users\lenck\source\repos\StartNauki\Lotto\bin\Debug\net6.0\Lotto.runtimeconfig.json
+C:\Users\lenck\source\repos\StartNauki\Lotto\bin\Debug\net6.0\Lotto.dll
+C:\Users\lenck\source\repos\StartNauki\Lotto\bin\Debug\net6.0\Lotto.pdb
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\Lotto.dll
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\refint\Lotto.dll
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\Lotto.pdb
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\Lotto.genruntimeconfig.cache
+C:\Users\lenck\source\repos\StartNauki\Lotto\obj\Debug\net6.0\ref\Lotto.dll
