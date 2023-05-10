@@ -22,10 +22,10 @@
                 Console.WriteLine("Witaj w grze LOTTO, dziś do wygrania jest aż {0} zł ", pula);
                 Console.WriteLine("Twój stan konta wynosi: {0} zł\n", portfel);
 
-                Console.WriteLine("Twoje aktualne kupony: \n");
+                Console.WriteLine("Twoje aktualne kupony:");
                 los.Wyswietl_Kupon(kupon);
 
-                Console.WriteLine("WYbierz co chcesz zrobić: ");
+                Console.WriteLine("\n\nWybierz co chcesz zrobić: ");
                 Console.WriteLine("1. Postaw kupon (3 zł)");
                 Console.WriteLine("2. Sprawdź kupon");
                 Console.WriteLine("3. Wyświetl kupon");
@@ -106,7 +106,7 @@
 
                     portfel = portfel - (ilosc_zakladow * 3);
                     PobierzLiczby(ilosc_zakladow, liczby);
-                    kupon.Add(liczby);
+                   // kupon.Add(liczby);
 
                 }
 
@@ -144,16 +144,20 @@
                         if (!int.TryParse(Console.ReadLine(), out liczba))      //obsługa podobnej sytuacji jak w wyjątku, ale za pomocą metody TryParse
                         {
                             Console.WriteLine("To nie jest liczba!");
+                            Console.ReadKey();
                             continue;
                         }
                         if (liczba < 1 || liczba > 49)
                         {
                             Console.WriteLine("Liczba musi być z zakresu 1-49");
+                            Console.ReadKey();
                             continue;
                         }
                         if (Array.IndexOf(liczby, liczba) != -1)
                         {
                             Console.WriteLine("Ta liczba już wystąpiła na kuponie");
+                            Console.ReadKey();
+                            continue;
                         }
                         else
 
@@ -186,6 +190,7 @@
                     {
                         Console.Write("{0} ", liczba);
                     }
+                    Console.WriteLine();
 
                 }
             }
