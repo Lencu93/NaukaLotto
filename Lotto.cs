@@ -1,4 +1,7 @@
-﻿namespace Lotto
+﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+
+namespace Lotto
 {
     class Lotto
     {
@@ -34,11 +37,14 @@
                 Console.Write("Twój wybór: ");
                 wybor = Console.ReadKey().Key;
 
+                
+                
                 switch (wybor)
                 {
                     case ConsoleKey.D1:
                         Console.Clear();
                         kupon.Add(los.PostawKupon());
+                        
 
                         //  Console.ReadKey();
                         break;
@@ -106,7 +112,7 @@
 
                     portfel = portfel - (ilosc_zakladow * 3);
                     PobierzLiczby(ilosc_zakladow, liczby);
-                   // kupon.Add(liczby);
+                    
 
                 }
 
@@ -119,9 +125,10 @@
         {
 
             int liczba;
+            
             for (int i = 0; i < ilosc; i++)
             {
-
+               if (i > 0) kupon.Add(liczby);
 
                 for (int j = 0; j < liczby.Length; j++)
                 {
@@ -162,12 +169,15 @@
                         else
 
                         {
-                            liczby[j] = liczba;
+                            liczby[j] = liczba;    
                             break;
                         }
 
+                        
                     } while (true);
+                   
                 }
+               
             }
 
         }
