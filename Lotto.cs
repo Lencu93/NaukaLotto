@@ -7,9 +7,9 @@ namespace Lotto
     {
 
         static int dzien = 1;
-        static Random rnd = new Random();
-        static double pula = Math.Round(rnd.Next(1, 35) * 1000000 * rnd.NextDouble(), 2);
-        public static int portfel = 25;
+        public static Random rnd = new Random();
+        public static double pula = Math.Round(rnd.Next(1, 35) * 1000000 * rnd.NextDouble(), 2);
+        public static double portfel = 25;
         static ConsoleKey wybor;
         public static List<int[]> kupon = new List<int[]>();
 
@@ -37,26 +37,40 @@ namespace Lotto
                 Console.Write("Twój wybór: ");
                 wybor = Console.ReadKey().Key;
 
-                
-                
+
+
                 switch (wybor)
                 {
                     case ConsoleKey.D1:
                         Console.Clear();
-                        kupon.Add(los.PostawKupon());
-                        
+                        los.PostawKupon();
 
-                        //  Console.ReadKey();
                         break;
 
 
                     case ConsoleKey.D2:
-                        Console.WriteLine("Wybrano 2 - Sprawdź Kupon");
+                        Console.Clear();
+                        Console.WriteLine("\nWybrano 2 - Sprawdź Kupon");
+                        Console.WriteLine("Dzisiejsza pula wynosi: {0}", pula);
+                        Console.WriteLine("\nDZIEŃ: {0}", dzien);
+                        Console.WriteLine("Wylosowane liczby to: ");
+                        los.SprawdzKupon(kupon);
+
+                        Console.WriteLine("\nTwoje losy to: ");
+                        los.Wyswietl_Kupon(kupon);
+
+                        //  Console.WriteLine("\nGratulacje trafiłeś {0}", iloscTrafionych);
+
+                        Console.ReadKey();
+                        dzien++;
+                        pula = Math.Round(pula * 1.35, 2);
                         break;
 
                     case ConsoleKey.D3:
+                        Console.Clear();
                         Console.WriteLine("Wybrano 3 - Wyświetl Kupon");
-
+                        los.Wyswietl_Kupon(kupon);
+                        Console.ReadKey();
 
                         break;
 
@@ -112,7 +126,7 @@ namespace Lotto
 
                     portfel = portfel - (ilosc_zakladow * 3);
                     PobierzLiczby(ilosc_zakladow, liczby);
-                    
+
 
                 }
 
@@ -125,10 +139,11 @@ namespace Lotto
         {
 
             int liczba;
-            
+
             for (int i = 0; i < ilosc; i++)
             {
-               if (i > 0) kupon.Add(liczby);
+                int[] nowyKupon = new int[6];
+
 
                 for (int j = 0; j < liczby.Length; j++)
                 {
@@ -169,15 +184,17 @@ namespace Lotto
                         else
 
                         {
-                            liczby[j] = liczba;    
+                            liczby[j] = liczba;
+                            nowyKupon[j] = liczba;
                             break;
                         }
 
-                        
+
                     } while (true);
-                   
+
                 }
-               
+                Array.Sort(nowyKupon);
+                kupon.Add(nowyKupon);
             }
 
         }
@@ -206,6 +223,80 @@ namespace Lotto
             }
         }
 
+        public void SprawdzKupon(List<int[]> kupon)
+        {
+            int[] tablica = new int[6];
+            int iloscTrafionych = 0;
+            int numerKuponu = 1;
 
+            for (int i = 0; i < tablica.Length; i++)
+            {
+                tablica[i] = rnd.Next(1, 50);
+                //tablica[i] = i + 1;
+            }
+
+            for (int i = 0; i < tablica.Length; i++)
+            {
+                Console.Write(tablica[i] + " ");
+            }
+
+            Console.WriteLine();
+
+
+            foreach (int[] c in kupon)
+            {
+
+                foreach (int l in c)
+                {
+                    bool liczbaPasuje = false;
+
+                    foreach (int t in tablica)
+                    {
+                        if (l == t)
+                        {
+                            liczbaPasuje = true;
+                            iloscTrafionych++;
+
+                        }
+
+
+                    }
+                }
+                Console.WriteLine("Gratulacje trafiłeś {0} w losie numer {1}", iloscTrafionych, numerKuponu);
+
+                switch (iloscTrafionych)
+                {
+
+                    case 2: // 5
+                        portfel = pula * 0.05;
+                        Console.WriteLine("\nTwoja nagroda to: {0}", pula*0.05);
+                        break;
+                    case 3: //10
+                        portfel = pula * 0.10;
+                        Console.WriteLine("\nTwoja nagroda to: {0}", pula*0.10);
+                        break;
+                    case 4: //25
+                        portfel = pula * 0.25;
+                        Console.WriteLine("\nTwoja nagroda to: {0}", pula * 0.25);
+                        break;
+                    case 5: //50
+                        portfel = pula * 0.50;
+                        Console.WriteLine("\nTwoja nagroda to: {0}", pula * 0.50);
+                        break;
+                    case 6:  //100
+                        portfel = pula;
+                        Console.WriteLine("\nTwoja nagroda to: {0}", pula);
+                        break;
+
+                    default: break;
+                }
+
+                iloscTrafionych = 0;
+                numerKuponu++;
+            }
+
+            
+
+        }
     }
 }
